@@ -1,0 +1,6 @@
+packages:
+  - backend
+  - frontend
+allowBuilds:
+  '@swc/core': false
+  esbuild: false

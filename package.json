@@ -1,23 +1,22 @@
 {
-	"name": "task-board",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"workspaces": [
-		"frontend",
-		"backend"
-	],
-	"scripts": {
-		"dev:backend": "pnpm run watch --workspace=backend",
-		"dev:frontend": "pnpm run dev --workspace=frontend",
-		"dev": "concurrently \"pnpm run dev:backend\" \"pnpm run dev:frontend\"",
-		"lint": "pnpm --filter ./backend run lint && pnpm --filter ./frontend run lint",
-		"format": "pnpm --filter ./backend run format && pnpm --filter ./frontend run format",
-		"format:check": "pnpm --filter ./backend run format:check && pnpm --filter ./frontend run format:check"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"packageManager": "pnpm@10.29.3"
-	
+  "name": "task-board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:backend": "pnpm --filter ./backend run dev",
+    "dev:frontend": "pnpm --filter ./frontend run dev",
+    "dev": "pnpm --parallel --filter ./backend --filter ./frontend run dev",
+    "lint": "pnpm --filter ./backend run lint && pnpm --filter ./frontend run lint",
+    "format": "pnpm --filter ./backend run format && pnpm --filter ./frontend run format",
+    "format:check": "pnpm --filter ./backend run format:check && pnpm --filter ./frontend run format:check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.32.1"
 }
