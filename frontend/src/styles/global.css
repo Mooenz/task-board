@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+@import 'tailwind-animations';
+
+:root {
+  --font: 'Outfit', sans-serif;
+}
+
+@theme {
+  --color-yellow: #f5d565;
+  --color-orange-light: #f5e8d5;
+  --color-orange: #e9a23b;
+  --color-green-light: #a0ecb1;
+  --color-green: #32d657;
+  --color-red-light: #f7d4d3;
+  --color-red: #dd524c;
+  --color-grey-light: #e3e8ef;
+  --color-grey: #97a3b6;
+  --color-blue: #3662e3;
+  --color-dark: #00000033;
+  --color-text: #030616;
+}
+
+html,
+body {
+  font-family: var(--font);
+  color: var(--color-text);
+}
