@@ -14,7 +14,11 @@ export default function Home() {
   }, [boardId, navigate])
 
   if (createError) {
-    return <section className="w-full mx-auto max-w-137.5">Error creating board</section>
+    return (
+      <section className="w-full mx-auto max-w-137.5" role="alert" aria-live="assertive">
+        Error creating board
+      </section>
+    )
   }
 
   return <LoadingSkeleton variant="home" />

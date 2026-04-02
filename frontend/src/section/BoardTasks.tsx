@@ -57,9 +57,13 @@ const BoardTasks = ({ boardTask, dataBoard }: PropsType) => {
           <button
             onClick={handleAddNewTask}
             disabled={isPending}
+            aria-label="Add new task"
             className="animate-zoom-in animate-duration-500 animate-delay-400 flex items-center gap-4 sm:gap-5 p-1 sm:p-4  rounded-2xl bg-orange-light outline-2 outline-transparent hover:outline-orange focus:outline-orange focus-within:outline-orange focus-visible:outline-blu mt-1 sm:mt-5 w-full active:scale-95 cursor-pointer transition-all ease-in-out duration-300 font-bold border-4 border-white disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-none"
           >
-            <span className="flex items-center justify-center min-w-9 w-9 h-9 sm:min-w-11 sm:w-11 sm:h-11 rounded-xl bg-orange">
+            <span
+              className="flex items-center justify-center min-w-9 w-9 h-9 sm:min-w-11 sm:w-11 sm:h-11 rounded-xl bg-orange"
+              aria-hidden="true"
+            >
               <AddRoundDuotone />
             </span>
             Add new task

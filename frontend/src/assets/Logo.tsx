@@ -2,6 +2,8 @@ const Logo = () => {
   return (
     <svg
       className="animate-zoom-in animate-duration-500"
+      aria-hidden="true"
+      focusable="false"
       width="40"
       height="40"
       viewBox="0 0 40 40"

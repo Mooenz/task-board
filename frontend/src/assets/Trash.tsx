@@ -1,6 +1,14 @@
 export const Trash = () => {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path d="M8.33333 12.5L8.33333 10" stroke="#FEF7EE" strokeWidth="2" strokeLinecap="round" />
       <path d="M11.6667 12.5L11.6667 10" stroke="#FEF7EE" strokeWidth="2" strokeLinecap="round" />
       <path

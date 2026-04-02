@@ -57,7 +57,7 @@ const Task = ({ task, index }: Props) => {
         <div className="flex items-center gap-4 sm:gap-5">
           <span className={`${classIcon} bg-white`}>{icon}</span>
           <div className="text-start">
-            <h2 className="text-balance text-md sm:text-xl font-semibold mb-1">{name}</h2>
+            <h3 className="text-balance text-md sm:text-xl font-semibold mb-1">{name}</h3>
             {description && (
               <p className="text-pretty text-sm sm:text-base font-light">{description}</p>
             )}
