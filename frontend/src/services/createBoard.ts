@@ -1,10 +1,6 @@
-import axios from 'axios'
 import type { BoardType } from '@/@types'
+import { api } from '@/services/api'
 
 export async function createBoard(): Promise<BoardType> {
-  return axios
-    .post<BoardType>('http://localhost:3000/api/boards', {
-      headers: { 'Content-Type': 'application/json' },
-    })
-    .then((response) => response.data)
+  return api.post<BoardType>('/boards').then((response) => response.data)
 }

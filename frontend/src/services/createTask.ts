@@ -1,11 +1,6 @@
-import axios from 'axios'
 import type { CreateTaskType } from '@/@types'
+import { api } from '@/services/api'
 
 export async function createTask(newTask: CreateTaskType) {
-
-  return axios
-    .post<CreateTaskType>(`http://localhost:3000/api/tasks`, newTask, {
-      headers: { 'Content-Type': 'application/json' },
-    })
-    .then((response) => response.data)
+  return api.post<CreateTaskType>('/tasks', newTask).then((response) => response.data)
 }

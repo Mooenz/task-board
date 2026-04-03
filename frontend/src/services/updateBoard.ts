@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { api } from '@/services/api'
 
 type PropTypes = {
   id: string | null
@@ -7,7 +7,5 @@ type PropTypes = {
 }
 
 export async function updateBoard({ id, name, description }: PropTypes) {
-  return axios
-    .put(`http://localhost:3000/api/boards/${id}`, { name, description })
-    .then((response) => response.data)
+  return api.put(`/boards/${id}`, { name, description }).then((response) => response.data)
 }

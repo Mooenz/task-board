@@ -1,8 +1,6 @@
-import axios from 'axios'
 import type { BoardType } from '@/@types'
+import { api } from '@/services/api'
 
 export async function getBoard(boardId: string): Promise<BoardType> {
-  return axios
-    .get<BoardType>(`http://localhost:3000/api/boards/${boardId}`)
-    .then((response) => response.data)
+  return api.get<BoardType>(`/boards/${boardId}`).then((response) => response.data)
 }
