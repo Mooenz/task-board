@@ -34,6 +34,7 @@ const StatusOption = ({ status, icon, checked, onSelect }: PropsType) => {
         className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
         type="radio"
         name="taskStatus"
+        aria-label={`Status ${status}`}
         checked={checked}
         onChange={() => onSelect && onSelect(icon)}
       />

@@ -5,7 +5,7 @@ type MessageErrorProps = {
 
 export default function MessageError({ countdown }: MessageErrorProps) {
   return (
-    <section className="w-full mx-auto max-w-148">
+    <section className="w-full mx-auto max-w-148" role="status" aria-live="polite">
       <div className="rounded-xl text-center px-5 py-4">
         <div className="flex items-center justify-center mb-6">
           <Logo />

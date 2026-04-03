@@ -108,38 +108,38 @@ const Form = ({ taskData }: PropTypes) => {
       </div>
 
       <div className="mb-5">
-        <label className="block text-[0.75rem] text-grey font-light mb-1" htmlFor="taskIcon">
-          Icon
-        </label>
+        <fieldset>
+          <legend className="block text-[0.75rem] text-grey font-light mb-1">Icon</legend>
 
-        <div className="flex flex-wrap gap-3">
-          {iconsOptions.map((element) => (
-            <IconOption
-              key={element.id}
-              icon={element.icon}
-              checked={taskDataState?.icon === element.icon}
-              onSelect={handleIconChange}
-            />
-          ))}
-        </div>
+          <div className="flex flex-wrap gap-3">
+            {iconsOptions.map((element) => (
+              <IconOption
+                key={element.id}
+                icon={element.icon}
+                checked={taskDataState?.icon === element.icon}
+                onSelect={handleIconChange}
+              />
+            ))}
+          </div>
+        </fieldset>
       </div>
 
       <div className="mb-5">
-        <label className="block text-[0.75rem] text-grey font-light mb-1" htmlFor="taskStatus">
-          Status
-        </label>
+        <fieldset>
+          <legend className="block text-[0.75rem] text-grey font-light mb-1">Status</legend>
 
-        <div className="grid sm:grid-cols-2 gap-y-3 gap-x-4">
-          {statusOptions.map((option) => (
-            <StatusOption
-              key={option.id}
-              status={option.status}
-              icon={option.icon}
-              checked={taskDataState?.status === option.icon}
-              onSelect={handleStatusChange}
-            />
-          ))}
-        </div>
+          <div className="grid sm:grid-cols-2 gap-y-3 gap-x-4">
+            {statusOptions.map((option) => (
+              <StatusOption
+                key={option.id}
+                status={option.status}
+                icon={option.icon}
+                checked={taskDataState?.status === option.icon}
+                onSelect={handleStatusChange}
+              />
+            ))}
+          </div>
+        </fieldset>
       </div>
 
       <div className="flex justify-end gap-4 mt-auto">

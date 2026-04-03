@@ -1,5 +1,5 @@
-import axios from 'axios'
+import { api } from '@/services/api'
 
 export async function deleteTask(taskId: string) {
-  return axios.delete(`http://localhost:3000/api/tasks/${taskId}`);
+  return api.delete(`/tasks/${taskId}`)
 }

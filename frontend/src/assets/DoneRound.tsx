@@ -6,6 +6,8 @@ type PropsType = {
 export const DoneRound = ({ width, height }: PropsType) => {
   return (
     <svg
+      aria-hidden="true"
+      focusable="false"
       width={width}
       height={height}
       viewBox="0 0 20 20"

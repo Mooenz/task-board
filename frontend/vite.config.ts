@@ -4,10 +4,12 @@ import { fileURLToPath, URL } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react-swc'
 
+const repoBase = process.env.VITE_BASE_PATH ?? '/task-board/'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
-  base: '/',
+  base: repoBase,
   server: {
     proxy: {
       '/api': {
