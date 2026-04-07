@@ -6,10 +6,15 @@
     "lib": ["ES2022"],
     "types": ["node"],
     "strict": true,
-    "noEmit": true,
+
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+
     "paths": {
       "@/*": ["./src/*"]
     }
