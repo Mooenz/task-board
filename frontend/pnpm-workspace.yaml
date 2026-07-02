@@ -1,0 +1,4 @@
+allowBuilds:
+  '@swc/core': false
+minimumReleaseAgeExclude:
+  - '@types/node@26.1.0'
