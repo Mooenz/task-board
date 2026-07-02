@@ -9,7 +9,18 @@ import { randomUUID } from 'crypto'
 import { z } from 'zod/v4'
 
 const app = express()
-const frontendOrigin = process.env.FRONTEND_ORIGIN ?? 'http://localhost:5173'
+const isProduction = process.env.NODE_ENV === 'production'
+
+function resolveFrontendOrigin(): string {
+  const raw = process.env.FRONTEND_ORIGIN ?? 'http://localhost:5173'
+  try {
+    return new URL(raw).origin
+  } catch {
+    return raw.replace(/\/+$/, '')
+  }
+}
+
+const frontendOrigin = resolveFrontendOrigin()
 const uuidSchema = z.string().uuid()
 
 app.use(
@@ -28,8 +39,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
   res.cookie(ANONYMOUS_USER_COOKIE, anonymousUserId, {
     httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction,
     maxAge: 1000 * 60 * 60 * 24 * 365,
   })
 
