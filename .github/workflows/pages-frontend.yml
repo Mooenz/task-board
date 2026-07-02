@@ -2,7 +2,7 @@ name: Deploy Frontend to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
       run:
         working-directory: frontend
     env:
-      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_API_URL: https://task-board-u92z.onrender.com
       VITE_BASE_PATH: /task-board/
       VITE_ROUTER_BASENAME: /task-board
     steps:
