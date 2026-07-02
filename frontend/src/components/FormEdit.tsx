@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import StatusOption from '@/components/StatusOption'
 import IconOption from '@/components/IconOption'
+import DeleteTaskModal from '@/components/DeleteTaskModal'
 import { DoneRound } from '@/assets/DoneRound'
 import { Trash } from '@/assets/Trash'
 import { useDeleteTask } from '@/hooks/useDeleteTask'
 import { useUpdateTask } from '@/hooks/useUpdateTask'
 import uiStore from '@/store/ui.store'
 import boardStore from '@/store/board.store'
+import toastStore from '@/store/toast.store'
 import type { TaskType, TaskStatus } from '@/@types/index'
 
 type PropTypes = {
@@ -21,9 +23,11 @@ type StatusOptionType = {
 
 const Form = ({ taskData }: PropTypes) => {
   const [taskDataState, setTaskData] = useState(taskData)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
   const { mutate: deleteTask } = useDeleteTask()
   const { mutate: updateTask } = useUpdateTask()
   const changeStateAside = uiStore((state) => state.changeStateAside)
+  const showToast = toastStore((state) => state.showToast)
   const boardId = boardStore((state) => state.boardId)
 
   const statusOptions: StatusOptionType[] = [
@@ -49,7 +53,14 @@ const Form = ({ taskData }: PropTypes) => {
     e.preventDefault()
 
     if (taskDataState) {
-      updateTask({ taskDataState, boardId })
+      updateTask(
+        { taskDataState, boardId },
+        {
+          onSuccess: () => {
+            showToast('Task updated')
+          },
+        }
+      )
       changeStateAside(false)
     }
   }
@@ -68,15 +79,30 @@ const Form = ({ taskData }: PropTypes) => {
   }
 
   const handleDeleteTask = () => {
-    const res = window.confirm('Are you sure you want to delete this task?')
+    setShowDeleteModal(true)
+  }
 
-    if (taskDataState?.id && res) {
-      deleteTask({ taskId: taskDataState.id, boardId })
+  const handleConfirmDelete = () => {
+    if (taskDataState?.id) {
+      deleteTask(
+        { taskId: taskDataState.id, boardId },
+        {
+          onSuccess: () => {
+            showToast('Task deleted')
+          },
+        }
+      )
+      setShowDeleteModal(false)
       changeStateAside(false)
     }
   }
 
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false)
+  }
+
   return (
+    <>
     <form className="flex flex-col flex-1" onSubmit={handleSubmit}>
       <div className="mb-5">
         <label className="block text-[0.75rem] text-grey font-light mb-1" htmlFor="taskName">
@@ -145,6 +171,7 @@ const Form = ({ taskData }: PropTypes) => {
       <div className="flex justify-end gap-4 mt-auto">
         <button
           onClick={handleDeleteTask}
+          type="button"
           className={`${styleButton} bg-grey hover:outline-grey focus:outline-grey focus-within:outline-blue focus-visible:outline-grey `}
         >
           Delete
@@ -159,6 +186,14 @@ const Form = ({ taskData }: PropTypes) => {
         </button>
       </div>
     </form>
+
+    <DeleteTaskModal
+      open={showDeleteModal}
+      taskName={taskDataState?.name ?? ''}
+      onConfirm={handleConfirmDelete}
+      onClose={handleCloseDeleteModal}
+    />
+    </>
   )
 }
 

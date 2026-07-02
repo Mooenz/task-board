@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     if (boardId) {
-      navigate(`/board/${boardId}`, { replace: true })
+      navigate(`/${boardId}`, { replace: true })
     }
   }, [boardId, navigate])
 

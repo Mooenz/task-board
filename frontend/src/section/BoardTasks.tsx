@@ -49,9 +49,22 @@ const BoardTasks = ({ boardTask, dataBoard }: PropsType) => {
     <>
       <section>
         <ul className="flex flex-col gap-1 sm:gap-4">
-          {boardTask?.map((task, index) => (
-            <Task key={task.id} task={task} index={index} />
-          ))}
+          {lengthTask === 0 ? (
+            <li
+              className="animate-fade-in-up animate-duration-500 rounded-2xl border-2 sm:border-4 border-white bg-grey-light px-4 py-6 sm:px-6 sm:py-8 text-center"
+              role="status"
+              aria-live="polite"
+            >
+              <p className="text-md sm:text-xl font-semibold">No hay tareas</p>
+              <p className="mt-1 text-sm sm:text-base font-light text-balance">
+                Crea tu primera tarea con el botón de abajo.
+              </p>
+            </li>
+          ) : (
+            boardTask?.map((task, index) => (
+              <Task key={task.id} task={task} index={index} />
+            ))
+          )}
         </ul>
         {lengthTask < 30 && (
           <button

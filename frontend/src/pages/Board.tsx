@@ -39,7 +39,7 @@ export default function Board() {
   useEffect(() => {
     if (countdown === 0 && notFoundBoard) {
       setBoardId(null)
-      navigate('/board', { replace: true })
+      navigate('/', { replace: true })
     }
   }, [countdown, notFoundBoard, navigate, setBoardId])
 

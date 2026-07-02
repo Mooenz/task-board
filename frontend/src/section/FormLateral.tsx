@@ -22,7 +22,6 @@ const FormLateral = ({ title, children }: PropsType) => {
     <aside
       aria-modal="true"
       aria-labelledby="form-lateral-title"
-      aria-hidden={!stateAside}
       inert={!stateAside}
       role="dialog"
       className={`fixed inset-0 z-100 bg-black/20 sm:p-4 w-full transition-opacity duration-500 ease-in-out ${stateAside ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -33,6 +32,7 @@ const FormLateral = ({ title, children }: PropsType) => {
         tabIndex={stateAside ? 0 : -1}
         className={`absolute w-full h-full z-10 transition-opacity duration-500 ease-in-out delay-100 ${stateAside ? 'opacity-100' : 'opacity-0 pointer-events-none'} `}
         onClick={handleCloseAside}
+        arial-hidden="true"
       ></button>
 
       <section
