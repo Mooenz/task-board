@@ -21,8 +21,9 @@ jobs:
       run:
         working-directory: frontend
     env:
-    VITE_API_URL: ${{ secrets.VITE_API_URL }}
-      VITE_BASE_PATH: /board/
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_BASE_PATH: /task-board/
+      VITE_ROUTER_BASENAME: /task-board/board
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,6 +46,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Add SPA fallback for GitHub Pages
+        run: cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -53,6 +57,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
