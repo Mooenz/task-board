@@ -10,7 +10,7 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/board">
+    <BrowserRouter basename={import.meta.env.VITE_ROUTER_BASENAME ?? '/board'}>
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
