@@ -21,8 +21,8 @@ jobs:
       run:
         working-directory: frontend
     env:
-      VITE_API_URL: ${{ secrets['VITE_API_URL'] || 'http://localhost:3000' }}
-      VITE_BASE_PATH: /task-board/
+    VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_BASE_PATH: /board/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.33.0
+          version: 11.9.0
 
       - name: Setup Node
         uses: actions/setup-node@v4
