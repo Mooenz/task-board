@@ -8,9 +8,9 @@
 
 <div align="center">
   <h3>
-    <a href="#">Demo (pendiente)</a>
+    <a href="https://mooenz.github.io/task-board/">Demo</a>
     <span> | </span>
-    <a href="#">Solution (pendiente)</a>
+    <a href="https://devchallenges.io/solution/64899">Solution</a>
     <span> | </span>
     <a href="https://devchallenges.io/challenge/my-task-board-app">Challenge</a>
   </h3>
